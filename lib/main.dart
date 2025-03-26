@@ -1,70 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:mi_card_flutter/resources/text.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+      theme: ThemeData(
+          textTheme: TextTheme(
+        bodyLarge: largeText,
+        bodyMedium: mediumText,
+        bodySmall: smallText,
+      )),
+      home: MyCard()));
 }
 
-const PI = 3.14159;
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyCard extends StatelessWidget {
+  const MyCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-            child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.center,
+    return Scaffold(
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.all(Radius.circular(5))),padding: EdgeInsets.all(5),
-                  height: 100,
-                  width: 100,
-                  child: Text("Container 1"),
+                CircleAvatar(
+                  radius: 70,
+                  backgroundColor: Colors.red[150],
+                  backgroundImage: AssetImage("assets/images/my_image.jpg"),
                 ),
-                Container(
-                  decoration: BoxDecoration(color: Colors.red,borderRadius: BorderRadius.all(Radius.circular(5))),padding: EdgeInsets.all(5),
-                  height: 100,
-                  width: 100,
-                  child: Text("Container 2"),
+                Text(
+                  "Shubham Lathiya",
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                Container(
-                  decoration: BoxDecoration(color: Colors.yellow,borderRadius: BorderRadius.all(Radius.circular(5))),padding: EdgeInsets.all(5),
-                  height: 100,
-                  width: 100,
-                  child: Text("Container 3"),
+                Text(
+                  "Flutter Developer",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                Divider(
+                  indent: 100,
+                  endIndent: 100,
+                ),
+                Card(
+                  child: ListTile(
+                      leading: Icon(Icons.phone),
+                      title: Text(
+                        "+94 9484444047",
+                        style: Theme.of(context).textTheme.bodySmall,
+                      )),
+                ),
+                Card(
+                  child: ListTile(
+                      leading: Icon(Icons.email),
+                      title: Text(
+                        "shubhamwork1121@gmail.com",
+                        style: Theme.of(context).textTheme.bodySmall,
+                      )),
                 ),
               ],
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(color: Colors.red,borderRadius: BorderRadius.all(Radius.circular(5))),padding: EdgeInsets.all(5),
-                  height: 100,
-                  width: 100,
-                  child: Text("Container 1"),
-                  transform: Matrix4.rotationZ(PI / 4),
-                ),
-                Container(
-                  decoration: BoxDecoration(color: Colors.yellow,borderRadius: BorderRadius.all(Radius.circular(5))),padding: EdgeInsets.all(5),
-                  height: 100,
-                  width: 100,
-                  child: Text("Container 2"),transform: Matrix4.rotationZ(PI / 2),
-                ),
-                Container(
-                  decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.all(Radius.circular(5))),padding: EdgeInsets.all(5),
-                  height: 100,
-                  width: 100,
-                  child: Text("Container 3"),transform: Matrix4.rotationZ(PI / 1),
-                ),
-              ],
-            ),
-          ],
-        )),
+          ),
+        ),
       ),
     );
   }
